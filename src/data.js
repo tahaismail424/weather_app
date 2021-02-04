@@ -257,7 +257,7 @@ const data = (function () {
 
   function getTimeZone(latitude, longitude, weatherData) {
     return fetch(
-      `http://api.timezonedb.com/v2.1/get-time-zone?key=O0TVTNRS9DFL&format=json&by=position&lat=${latitude}&lng=${longitude}`,
+      `https://api.timezonedb.com/v2.1/get-time-zone?key=O0TVTNRS9DFL&format=json&by=position&lat=${latitude}&lng=${longitude}`,
       { mode: "cors" }
     )
       .then((response) => response.json())
