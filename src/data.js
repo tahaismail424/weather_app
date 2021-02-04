@@ -251,7 +251,10 @@ const data = (function () {
         return getTimeZone(response.coord.lat, response.coord.lon, weatherData);
       })
       .catch((err) => {
+        alert('City not found, please enter a valid city.');
         console.error(err);
+        location.reload();
+
       });
   }
 
