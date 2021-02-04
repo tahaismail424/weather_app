@@ -229,6 +229,14 @@ const data = (function () {
     )
       .then((response) => response.json())
       .then((response) => {
+
+        //throw error if city not found
+        if (response.cod === '400') {
+          alert('City was not found. Please enter a valid city');
+          location.reload();
+          return;
+        }
+
         console.log(response);
 
         let weatherData = new WeatherData(
@@ -243,7 +251,7 @@ const data = (function () {
           "",
           response.weather[0].main,
           response.weather[0].description,
-          `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
+          `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
         );
 
         console.log(weatherData);
@@ -251,8 +259,8 @@ const data = (function () {
         return getTimeZone(response.coord.lat, response.coord.lon, weatherData);
       })
       .catch((err) => {
-        alert('City not found, please enter a valid city.');
         console.error(err);
+        alert('Something went wrong with your request. Please try again.');
         location.reload();
 
       });
@@ -280,6 +288,8 @@ const data = (function () {
       })
       .catch((err) => {
         console.error(err);
+        alert('Something went wrong with your request. Please try again.');
+        location.reload();
       });
   }
 
